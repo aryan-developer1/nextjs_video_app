@@ -16,6 +16,8 @@ const handler = NextAuth({
       async authorize(credentials) {
         await connectToDatabase();
 
+        console.log("credentials aa gaya",credentials)
+
         const user = await User.findOne({ email: credentials?.email });
         if (!user) throw new Error("No user found");
 

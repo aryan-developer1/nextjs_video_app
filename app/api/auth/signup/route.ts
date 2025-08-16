@@ -23,7 +23,7 @@ export async function POST(request:NextRequest){
            }
 
            //create user
-           await User.create({email,password});
+           await User.create({name,email,password});
 
            //return response
            return NextResponse.json({message:"User created successfully"}, {status:201})
