@@ -3,6 +3,7 @@
 
 import { useState } from "react";
 import { useRouter } from "next/navigation";
+import { signIn } from "next-auth/react";
 
 export default function SignupPage() {
   const [name, setName] = useState("");
@@ -35,7 +36,10 @@ export default function SignupPage() {
         <div className="space-y-4">
           {/* Name Field */}
           <div>
-            <label htmlFor="name" className="block mb-1 text-gray-700 font-medium">
+            <label
+              htmlFor="name"
+              className="block mb-1 text-gray-700 font-medium"
+            >
               Full Name
             </label>
             <input
@@ -49,7 +53,10 @@ export default function SignupPage() {
 
           {/* Email Field */}
           <div>
-            <label htmlFor="email" className="block mb-1 text-gray-700 font-medium">
+            <label
+              htmlFor="email"
+              className="block mb-1 text-gray-700 font-medium"
+            >
               Email
             </label>
             <input
@@ -63,7 +70,10 @@ export default function SignupPage() {
 
           {/* Password Field */}
           <div>
-            <label htmlFor="password" className="block mb-1 text-gray-700 font-medium">
+            <label
+              htmlFor="password"
+              className="block mb-1 text-gray-700 font-medium"
+            >
               Password
             </label>
             <input
@@ -86,10 +96,28 @@ export default function SignupPage() {
 
         <p className="mt-6 text-sm text-center text-gray-600">
           Already have an account?{" "}
-          <a href="/login" className="text-green-600 font-semibold hover:underline">
+          <a
+            href="/login"
+            className="text-green-600 font-semibold hover:underline"
+          >
             Login
           </a>
         </p>
+        <div className="flex flex-col gap-4 mt-4">
+          <button
+            onClick={() => signIn("google", { callbackUrl: "/dashboard" })}
+            className="px-4 py-2 bg-red-500 text-white rounded"
+          >
+            Sign Up with Google
+          </button>
+
+          <button
+            onClick={() => signIn("github", { callbackUrl: "/dashboard" })}
+            className="px-4 py-2 bg-gray-800 text-white rounded"
+          >
+            Sign Up with GitHub
+          </button>
+        </div>
       </div>
     </div>
   );

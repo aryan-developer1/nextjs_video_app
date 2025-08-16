@@ -33,7 +33,7 @@ export default function LoginPage() {
               id="email"
               type="email"
               placeholder="Enter your email"
-              className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-400 focus:outline-none"
+              className="w-full text-black px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-400 focus:outline-none"
               onChange={(e) => setEmail(e.target.value)}
             />
           </div>
@@ -47,7 +47,7 @@ export default function LoginPage() {
               id="password"
               type="password"
               placeholder="Enter your password"
-              className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-400 focus:outline-none"
+              className="w-full text-black px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-400 focus:outline-none"
               onChange={(e) => setPassword(e.target.value)}
             />
           </div>
@@ -67,6 +67,21 @@ export default function LoginPage() {
             Sign up
           </a>
         </p>
+        <div className="flex flex-col gap-4 mt-4">
+      <button 
+        onClick={() => signIn("google", { callbackUrl: "/dashboard" })}
+        className="px-4 py-2 bg-red-500 text-white rounded"
+      >
+        Login with Google
+      </button>
+
+      <button 
+        onClick={() => signIn("github", { callbackUrl: "/dashboard" })}
+        className="px-4 py-2 bg-gray-800 text-white rounded"
+      >
+        Login with GitHub
+      </button>
+    </div>
       </div>
     </div>
   );
